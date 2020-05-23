@@ -1,0 +1,13 @@
+$primary-font: "Montserrat", sans-serif;
+$secondary-font: "Roboto", sans-serif;
+$icon-font: "icons";
+
+$white-color: #fff;
+$black-color: #000;
+$brand-color: #ff699f;
+
+@mixin break($breakpoint) {
+  @media only screen and (max-width: $breakpoint + "px") {
+    @content;
+  }
+}
