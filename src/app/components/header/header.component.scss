@@ -1,4 +1,11 @@
-@import "../../../scss/variables";
+@import "variables";
+
+.hamburger-wrapper {
+  display: none;
+  @include break(768) {
+    display: flex;
+  }
+}
 
 .header {
   .header__wrapper {
@@ -39,7 +46,7 @@
           height: 100%;
           width: 100%;
           position: absolute;
-          background: url("../../../assets/img/menu.svg") right no-repeat;
+          background: url("/assets/img/menu.svg") right no-repeat;
           background-size: contain;
         }
         &::after {
@@ -57,9 +64,6 @@
         align-items: center;
         font-size: 14px;
         line-height: 16px;
-        @include break(991) {
-          padding-right: 14px;
-        }
         @include break(768) {
           flex-direction: column;
           align-items: flex-start;
