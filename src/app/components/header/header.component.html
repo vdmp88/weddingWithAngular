@@ -5,7 +5,7 @@
         <img src="assets/img/logo.svg" alt="logo" />
       </a>
     </div>
-    <nav class="navigation" [ngClass]="isOpen ? 'active-nav' : ''">
+    <nav class="navigation" [ngClass]="{ 'active-nav': isOpen }">
       <ul class="navigation__list">
         <li class="navigation__title"><h3>Menu</h3></li>
         <li><a href="#">Services</a></li>
@@ -21,7 +21,7 @@
     <button
       class="hamburger hamburger-spin"
       (click)="toggle_menu()"
-      [ngClass]="isOpen ? 'is-active' : ''"
+      [ngClass]="{ 'active-nav': isOpen }"
     >
       <span class="hamburger__box">
         <span class="hamburger__inner"></span>

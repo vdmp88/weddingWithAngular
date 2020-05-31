@@ -13,6 +13,7 @@ import { OfferComponent } from './components/offer/offer.component';
 import { ServicesComponent } from './components/services/services.component';
 import { CardComponent } from './components/card/card.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { DataService } from './service/data.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

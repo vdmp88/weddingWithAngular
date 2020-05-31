@@ -1,14 +1,18 @@
+<ng-template #loader>
+  <div class="loading">loading...</div>
+</ng-template>
 <section class="section section--lesson">
   <div class="section__content">
     <div class="section__wrapper section__wrapper--lesson-desc">
-      <h1 class="section__title">Wedding Dance Lessons</h1>
-      <span class="section__subtitle">New Jersey</span>
-      <p class="section__text">
-        The wedding dance is one of the most important dances in your life. You
-        look perfect and the whole audience is looking at you. Also, it becomes
-        the favorite moment you like to play on videos and photos. Feel the
-        moment
-      </p>
+      <h1 class="section__title" *ngIf="!isLoading; else loader">
+        {{ sectionContent | json }}
+      </h1>
+      <!-- <span class="section__subtitle" *ngIf="!isLoading; else loader">
+        {{ sectionContent.meta.location }}
+      </span>
+      <p class="section__text" *ngIf="!isLoading; else loader">
+        {{ sectionContent.meta.description }}
+      </p> -->
       <div class="section__btns">
         <app-button></app-button>
       </div>

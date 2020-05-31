@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from './service/data.service';
 import { Subscription } from 'rxjs';
+import { Section } from './interfaces/Data';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,10 @@ export class AppComponent implements OnInit, OnDestroy {
   public serviceSectionSub: Subscription;
   public coachSectionSub: Subscription;
   public offerSectionSub: Subscription;
-  public infoContent: any;
-  public serviceContent: any;
-  public coachContent: any;
-  public offerContent: any;
+  public infoContent: Section;
+  public serviceContent: Section;
+  public coachContent: Section;
+  public offerContent: Section;
   public isLoading: boolean;
 
   constructor(private dataService: DataService) {}
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private getInfoSection(): void {
     this.isLoading = true;
     this.infoSectionSub = <Subscription>(
-      this.dataService.getInfoSection().subscribe((data) => {
+      this.dataService.getInfoSection().subscribe((data: Section) => {
         this.infoContent = data;
         this.isLoading = false;
       })
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private getServiceSection(): void {
     this.isLoading = true;
     this.serviceSectionSub = <Subscription>(
-      this.dataService.getServiceSection().subscribe((data) => {
+      this.dataService.getServiceSection().subscribe((data: Section) => {
         this.serviceContent = data;
         this.isLoading = false;
       })
@@ -57,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private getCoachSection(): void {
     this.isLoading = true;
     this.coachSectionSub = <Subscription>(
-      this.dataService.getCoachSection().subscribe((data) => {
+      this.dataService.getCoachSection().subscribe((data: Section) => {
         this.coachContent = data;
         this.isLoading = false;
       })
@@ -67,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private getOfferSection(): void {
     this.isLoading = true;
     this.offerSectionSub = <Subscription>(
-      this.dataService.getOfferSection().subscribe((data) => {
+      this.dataService.getOfferSection().subscribe((data: Section) => {
         this.offerContent = data;
         this.isLoading = false;
       })
