@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DataService } from '../../service/data.service';
+import { Subscription } from 'rxjs';
 import { Section } from '../../interfaces/Data';
 
 @Component({
@@ -6,18 +8,28 @@ import { Section } from '../../interfaces/Data';
   templateUrl: './dance-lesson.component.html',
   styleUrls: ['./dance-lesson.component.scss'],
 })
-export class DanceLessonComponent implements OnInit {
-  constructor() {}
+export class DanceLessonComponent implements OnInit, OnDestroy {
+  public infoSub: Subscription;
+  public infoContent: Section;
+  public isLoading: boolean;
 
-  @Input() sectionContent: any;
-  @Input() isLoading: boolean;
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.loading;
+    this.getInfoSection();
   }
 
-  get loading() {
-    console.log(this.isLoading);
-    return this.isLoading;
+  ngOnDestroy(): void {
+    this.infoSub.unsubscribe();
+  }
+
+  private getInfoSection(): void {
+    this.isLoading = true;
+    this.infoSub = <Subscription>(
+      this.dataService.getInfoSection().subscribe((data: Section) => {
+        this.infoContent = data;
+        this.isLoading = false;
+      })
+    );
   }
 }

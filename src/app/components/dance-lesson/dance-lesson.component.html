@@ -1,22 +1,24 @@
 <ng-template #loader>
-  <div class="loading">loading...</div>
+  <app-loader></app-loader>
 </ng-template>
-<section class="section section--lesson">
+<section class="section section--lesson" *ngIf="!isLoading; else loader">
   <div class="section__content">
     <div class="section__wrapper section__wrapper--lesson-desc">
-      <h1 class="section__title" *ngIf="!isLoading; else loader">
-        {{ sectionContent | json }}
+      <h1 class="section__title">
+        {{ infoContent.meta.title }}
       </h1>
-      <!-- <span class="section__subtitle" *ngIf="!isLoading; else loader">
-        {{ sectionContent.meta.location }}
+      <span class="section__subtitle">
+        {{ infoContent.meta.location }}
       </span>
-      <p class="section__text" *ngIf="!isLoading; else loader">
-        {{ sectionContent.meta.description }}
-      </p> -->
+      <p class="section__text">
+        {{ infoContent.meta.description }}
+      </p>
       <div class="section__btns">
         <app-button></app-button>
       </div>
     </div>
-    <div class="section__img"></div>
+    <div class="section__img">
+      <img src="/assets/img{{ infoContent.meta.heroImage }}" alt="heroImage" />
+    </div>
   </div>
 </section>

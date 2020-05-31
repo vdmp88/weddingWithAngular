@@ -14,6 +14,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { CardComponent } from './components/card/card.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DataService } from './service/data.service';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DataService } from './service/data.service';
     OfferComponent,
     ServicesComponent,
     CardComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

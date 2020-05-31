@@ -1,25 +1,20 @@
-<section class="section section--services">
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+<section class="section section--services" *ngIf="!isLoading; else loader">
   <h3 class="section__title">
-    Our Services
+    {{ serviceContent.meta.title }}
   </h3>
   <p class="section__text">
-    We want to make your wedding day perfect that is why suggest a lot of
-    options for dance: not only for a bride and groom but for their friends and
-    relatives
+    {{ serviceContent.meta.description }}
   </p>
   <div class="slider slider--services">
     <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide>
-        <app-card></app-card>
-      </ng-template>
-      <ng-template carouselSlide>
-        <app-card></app-card>
-      </ng-template>
-      <ng-template carouselSlide>
-        <app-card></app-card>
-      </ng-template>
-      <ng-template carouselSlide>
-        <app-card></app-card>
+      <ng-template
+        carouselSlide
+        *ngFor="let slideContent of serviceContent.content"
+      >
+        <app-card [slideContent]="slideContent"></app-card>
       </ng-template>
     </owl-carousel-o>
   </div>

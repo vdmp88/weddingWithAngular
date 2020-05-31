@@ -7,7 +7,9 @@ export interface Section {
 
 export interface SectionMeta {
   title: string;
-  description: string;
+  description?: string;
+  location?: string;
+  heroImage?: string;
 }
 
 export interface SectionAction {

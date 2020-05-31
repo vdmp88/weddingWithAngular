@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { DataService } from '../../service/data.service';
+import { Subscription } from 'rxjs';
+import { Section } from '../../interfaces/Data';
 
 @Component({
   selector: 'app-services',
@@ -7,9 +10,28 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./services.component.scss'],
 })
 export class ServicesComponent implements OnInit {
-  constructor() {}
+  public serviceSectionSub: Subscription;
+  public serviceContent: Section;
+  public isLoading: boolean;
+  constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getServiceSection();
+  }
+
+  ngOnDestroy(): void {
+    this.serviceSectionSub.unsubscribe();
+  }
+
+  private getServiceSection(): void {
+    this.isLoading = true;
+    this.serviceSectionSub = <Subscription>(
+      this.dataService.getServiceSection().subscribe((data: Section) => {
+        this.serviceContent = data;
+        this.isLoading = false;
+      })
+    );
+  }
 
   customOptions: OwlOptions = {
     loop: false,
