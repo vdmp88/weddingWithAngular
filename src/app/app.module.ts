@@ -15,6 +15,8 @@ import { CardComponent } from './components/card/card.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DataService } from './service/data.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ModalsComponent } from './components/modals/modals.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ServicesComponent,
     CardComponent,
     LoaderComponent,
+    ModalsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     CarouselModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ModalModule.forRoot(),
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

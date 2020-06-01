@@ -8,7 +8,7 @@
       flex-direction: column-reverse;
     }
     .section__wrapper--lesson-desc {
-      padding-right: 75px;
+      margin-right: 60px;
       max-width: 385px;
       padding-bottom: 80px;
       @include break(1200) {

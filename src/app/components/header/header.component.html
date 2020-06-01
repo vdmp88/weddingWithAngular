@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="container header__wrapper">
+  <div class="custom-container header__wrapper">
     <div class="logo">
       <a href="#">
         <img src="assets/img/logo.svg" alt="logo" />
@@ -14,7 +14,10 @@
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Lesson Review</a></li>
         <li>
-          <app-button></app-button>
+          <app-button
+            [classList]="'dark-btn'"
+            [textContent]="'Start'"
+          ></app-button>
         </li>
       </ul>
     </nav>

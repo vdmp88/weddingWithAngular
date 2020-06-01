@@ -14,7 +14,10 @@
         {{ infoContent.meta.description }}
       </p>
       <div class="section__btns">
-        <app-button></app-button>
+        <app-button
+          [classList]="'brand-btn'"
+          [textContent]="'Lets start'"
+        ></app-button>
       </div>
     </div>
     <div class="section__img">
