@@ -1,4 +1,8 @@
-<app-button (click)="openModal(template)"></app-button>
+<app-button
+  [classList]="'brand-btn'"
+  [textContent]="'Show Modal'"
+  (click)="openModal(template)"
+></app-button>
 
 <ng-template #template>
   <div class="modal-header">

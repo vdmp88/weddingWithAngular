@@ -12,7 +12,6 @@ export class DanceLessonComponent implements OnInit, OnDestroy {
   public infoSub: Subscription;
   public infoContent: Section;
   public isLoading: boolean;
-
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
