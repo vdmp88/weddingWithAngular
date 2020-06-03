@@ -10,6 +10,12 @@ export class DataService {
   readonly baseUrl: string =
     'https://us-central1-cms-edu-2020-api.cloudfunctions.net';
 
+  getNavigation(): Observable<Section> {
+    return this.httpClient.get<Section>(
+      `${this.baseUrl}/app/api/v1/section/navigation`
+    );
+  }
+
   getInfoSection(): Observable<Section> {
     return this.httpClient.get<Section>(
       `${this.baseUrl}/app/api/v1/section/info`

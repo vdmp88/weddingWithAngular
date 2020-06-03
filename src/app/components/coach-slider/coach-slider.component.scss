@@ -1,0 +1,85 @@
+@import "variables";
+
+.slider {
+  padding-top: 48px;
+  .slider__card-outer {
+    display: flex;
+    height: auto;
+    @include break(768) {
+      margin-right: 16px;
+    }
+    .slider__card-inner {
+      width: 100%;
+      display: flex;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0px 4px 30px rgba(207, 207, 207, 0.25);
+      border-radius: 2px;
+      height: 100%;
+      @include break(768) {
+        flex-direction: column;
+      }
+      .slider__img {
+        display: flex;
+        width: 100%;
+        object-fit: cover;
+        max-width: 250px;
+        @include break(768) {
+          max-width: 100%;
+        }
+        img {
+          width: 100%;
+        }
+      }
+      .slider__desc {
+        padding: 40px 24px;
+        position: relative;
+        width: 100%;
+        .slider__card-id {
+          line-height: 25px;
+          font-weight: 700;
+          @include break(768) {
+            font-size: 12px;
+          }
+        }
+        .slider__title {
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 23px;
+          padding-bottom: 24px;
+        }
+        .slider_subtitle {
+          line-height: 25px;
+          padding-bottom: 24px;
+          @include break(991) {
+            padding-bottom: 16px;
+          }
+          @include break(768) {
+            font-size: 13px;
+          }
+        }
+        .slider__list {
+          line-height: 25px;
+          padding-bottom: 12px;
+          .mark-text {
+            opacity: 0.5;
+            margin-right: 8px;
+          }
+          li + li {
+            margin-top: 8px;
+          }
+        }
+        .slider__btn {
+          padding-top: 50px;
+          @include break(991) {
+            padding-top: 0;
+          }
+          .default-button:first-child {
+            @include break(991) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

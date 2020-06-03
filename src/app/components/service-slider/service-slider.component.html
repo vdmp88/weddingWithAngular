@@ -1,0 +1,7 @@
+<div class="slider slider--services">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slideContent of sliderContent">
+      <app-card [slideContent]="slideContent"></app-card>
+    </ng-template>
+  </owl-carousel-o>
+</div>

@@ -18,6 +18,8 @@
       @include break(768) {
         max-width: 100%;
         padding-bottom: 0;
+        padding-right: 0;
+        margin-right: 0;
       }
       .section__title {
         margin-top: 75px;

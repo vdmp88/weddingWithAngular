@@ -1,0 +1,50 @@
+<div class="slider slider--coaches">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slideContent of sliderContent">
+      <div class="slider__card-outer">
+        <div class="slider__card-inner">
+          <div class="slider__img">
+            <img src="assets/img/coach.png" alt="coach" />
+          </div>
+          <div class="slider__desc">
+            <div class="slider__card-id">01</div>
+            <h4 class="slider__title">
+              For Bride and Groom
+            </h4>
+            <div class="slider_subtitle">{{ slideContent.direction }}</div>
+            <ul class="slider__list">
+              <li>
+                <span class="mark-text">Work experience</span>
+                {{ slideContent.workExperience }} years
+              </li>
+              <li>
+                <span class="mark-text">Teacher for</span>
+                {{ slideContent.teachExperience }} years
+              </li>
+              <li>
+                <span class="mark-text">Style</span>
+                <span *ngFor="let style of slideContent.style; let i = index">
+                  {{ style }}
+                  {{ i === slideContent.style.length - 1 ? "" : "," }}
+                </span>
+              </li>
+            </ul>
+            <div class="slider__btn">
+              <app-button
+                *ngIf="!isMobile"
+                [classList]="'brand-btn'"
+                [textContent]="'Lets start'"
+              ></app-button>
+              <app-button
+                *ngIf="isMobile"
+                [imgPath]="'assets/img/slider-button.svg'"
+                [classList]="'brand-btn brand-btn--mobile'"
+              >
+              </app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>

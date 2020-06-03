@@ -8,14 +8,9 @@
   <p class="section__text">
     {{ serviceContent.meta.description }}
   </p>
-  <div class="slider slider--services">
-    <owl-carousel-o [options]="customOptions">
-      <ng-template
-        carouselSlide
-        *ngFor="let slideContent of serviceContent.content"
-      >
-        <app-card [slideContent]="slideContent"></app-card>
-      </ng-template>
-    </owl-carousel-o>
+  <div class="slider-wrapper">
+    <app-service-slider
+      [sliderContent]="serviceContent.content"
+    ></app-service-slider>
   </div>
 </section>

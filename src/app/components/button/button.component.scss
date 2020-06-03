@@ -24,12 +24,16 @@
       border-radius: 50%;
       display: flex;
       justify-content: center;
+      align-items: center;
       position: absolute;
       right: 16px;
       bottom: 16px;
       display: none;
       @include break(991) {
         display: flex;
+      }
+      img {
+        width: auto;
       }
       &:hover::before {
         height: 0%;

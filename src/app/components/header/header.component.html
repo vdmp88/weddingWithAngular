@@ -1,4 +1,7 @@
-<header class="header">
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+<header class="header" *ngIf="!isLoading; else loader">
   <div class="custom-container header__wrapper">
     <div class="logo">
       <a href="#">
@@ -8,15 +11,19 @@
     <nav class="navigation" [ngClass]="{ 'active-nav': isOpen }">
       <ul class="navigation__list">
         <li class="navigation__title"><h3>Menu</h3></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Our Coaches</a></li>
-        <li><a href="#">Testimonials</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Lesson Review</a></li>
+        <li *ngFor="let item of navigationContent.content">
+          <a href="{{ item.url }}">{{ item.title }}</a>
+        </li>
         <li>
           <app-button
+            *ngIf="!isMobile"
             [classList]="'dark-btn'"
             [textContent]="'Start'"
+          ></app-button>
+          <app-button
+            *ngIf="isMobile"
+            [classList]="'brand-btn'"
+            [textContent]="'Lets start'"
           ></app-button>
         </li>
       </ul>

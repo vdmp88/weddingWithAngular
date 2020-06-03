@@ -17,6 +17,8 @@ import { DataService } from './service/data.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ModalsComponent } from './components/modals/modals.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ServiceSliderComponent } from './components/service-slider/service-slider.component';
+import { CoachSliderComponent } from './components/coach-slider/coach-slider.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CardComponent,
     LoaderComponent,
     ModalsComponent,
+    ServiceSliderComponent,
+    CoachSliderComponent,
   ],
   imports: [
     BrowserModule,
