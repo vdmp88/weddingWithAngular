@@ -1,22 +1,24 @@
-<app-button
-  [classList]="'brand-btn'"
-  [textContent]="'Show Modal'"
-  (click)="openModal(template)"
-></app-button>
-
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button
-      type="button"
-      class="close pull-right"
-      aria-label="Close"
-      (click)="modalRef.hide()"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+<!-- <button type="button" class="btn btn-primary" (click)="showModal()">
+  Open child modal
+</button> -->
+<div
+  bsModal
+  #loginModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  [config]="{ backdrop: 'static', keyboard: false }"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title pull-left">
+          Login modal
+        </h4>
+      </div>
+      <div class="modal-body">
+        I am a child modal, opened from parent component!
+      </div>
+    </div>
   </div>
-  <div class="modal-body">
-    Just a modal with a bunch of words inside, nothing serious.
-  </div>
-</ng-template>
+</div>

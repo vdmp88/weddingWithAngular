@@ -1,4 +1,10 @@
-import { Component, OnInit, Renderer2, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Subscription, Subscribable } from 'rxjs';
 import { Section } from '../../interfaces/Data';
@@ -8,7 +14,7 @@ import { Section } from '../../interfaces/Data';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public isOpen: boolean = false;
   public isLoading: boolean;
   public navigationSub: Subscription;
@@ -16,12 +22,11 @@ export class HeaderComponent implements OnInit {
   public isMobile: boolean;
   public breakpoint: number = 768;
 
-  constructor(private renderer: Renderer2, private dataService: DataService) {}
+  @Output() onButtonClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(private dataService: DataService) {}
 
   toggle_menu(): boolean {
-    !this.isOpen
-      ? this.renderer.addClass(document.body, 'overflow-h')
-      : this.renderer.removeClass(document.body, 'overflow-h');
     return (this.isOpen = !this.isOpen);
   }
 
@@ -40,6 +45,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.navigationSub.unsubscribe();
+  }
+
+  showModal(): void {
+    this.onButtonClick.emit(true);
   }
 
   private getNavigation(): void {

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (onButtonClick)="toggleModal($event)"></app-header>
 <div class="custom-container">
   <app-dance-lesson></app-dance-lesson>
   <app-services></app-services>
@@ -6,3 +6,7 @@
   <app-coaches></app-coaches>
 </div>
 <app-footer></app-footer>
+<app-modals
+  *ngIf="modalState"
+  (onButtonClick)="toggleModal($event)"
+></app-modals>

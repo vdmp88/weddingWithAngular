@@ -1,22 +1,31 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-modals',
   templateUrl: './modals.component.html',
   styleUrls: ['./modals.component.scss'],
 })
-export class ModalsComponent implements OnInit {
-  modalRef: BsModalRef;
+export class ModalsComponent implements OnInit, AfterViewInit {
+  @ViewChild('loginModal', { static: false }) loginModal: ModalDirective;
+  @Output() onButtonClick = new EventEmitter();
 
-  config = {
-    keyboard: true,
-  };
-  constructor(private modalService: BsModalService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
+  ngAfterViewInit(): void {
+    this.loginModal.show();
+  }
+
+  hideModal(): void {
+    this.onButtonClick.emit(false);
   }
 }

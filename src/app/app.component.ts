@@ -9,41 +9,14 @@ import { Section } from './interfaces/Data';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  public coachSectionSub: Subscription;
-  public offerSectionSub: Subscription;
-  public coachContent: Section;
-  public offerContent: Section;
-  public isLoading: boolean;
-
   constructor(private dataService: DataService) {}
+  public modalState: boolean = false;
 
-  ngOnInit(): void {
-    this.getCoachSection();
-    this.getOfferSection();
-  }
+  ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    this.coachSectionSub.unsubscribe();
-    this.offerSectionSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 
-  private getCoachSection(): void {
-    this.isLoading = true;
-    this.coachSectionSub = <Subscription>(
-      this.dataService.getCoachSection().subscribe((data: Section) => {
-        this.coachContent = data;
-        this.isLoading = false;
-      })
-    );
-  }
-
-  private getOfferSection(): void {
-    this.isLoading = true;
-    this.offerSectionSub = <Subscription>(
-      this.dataService.getOfferSection().subscribe((data: Section) => {
-        this.offerContent = data;
-        this.isLoading = false;
-      })
-    );
+  toggleModal(event: boolean): void {
+    this.modalState = event;
   }
 }

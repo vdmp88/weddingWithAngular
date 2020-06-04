@@ -19,6 +19,7 @@
             *ngIf="!isMobile"
             [classList]="'dark-btn'"
             [textContent]="'Start'"
+            (click)="showModal()"
           ></app-button>
           <app-button
             *ngIf="isMobile"
