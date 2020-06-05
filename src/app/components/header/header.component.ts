@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Subscription, Subscribable } from 'rxjs';
-import { Section } from '../../interfaces/Data';
+import { Section } from '../../interfaces/data.interface';
 
 @Component({
   selector: 'app-header',

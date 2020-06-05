@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Subscription } from 'rxjs';
-import { Section } from '../../interfaces/Data';
+import { Section } from '../../interfaces/data.interface';
 
 @Component({
   selector: 'app-dance-lesson',

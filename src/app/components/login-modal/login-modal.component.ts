@@ -9,11 +9,11 @@ import {
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-modals',
-  templateUrl: './modals.component.html',
-  styleUrls: ['./modals.component.scss'],
+  selector: 'app-login-modal',
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.scss'],
 })
-export class ModalsComponent implements OnInit, AfterViewInit {
+export class LoginModalComponent implements OnInit, AfterViewInit {
   @ViewChild('loginModal', { static: false }) loginModal: ModalDirective;
   @Output() onButtonClick = new EventEmitter();
 

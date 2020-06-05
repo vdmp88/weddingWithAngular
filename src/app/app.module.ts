@@ -15,7 +15,7 @@ import { CardComponent } from './components/card/card.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { DataService } from './service/data.service';
 import { LoaderComponent } from './components/loader/loader.component';
-import { ModalsComponent } from './components/modals/modals.component';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ServiceSliderComponent } from './components/service-slider/service-slider.component';
 import { CoachSliderComponent } from './components/coach-slider/coach-slider.component';
@@ -32,7 +32,7 @@ import { CoachSliderComponent } from './components/coach-slider/coach-slider.com
     ServicesComponent,
     CardComponent,
     LoaderComponent,
-    ModalsComponent,
+    LoginModalComponent,
     ServiceSliderComponent,
     CoachSliderComponent,
   ],
