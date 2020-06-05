@@ -14,7 +14,42 @@
         </h4>
       </div>
       <div class="modal-body">
-        I am a child modal, opened from parent component!
+        <form>
+          <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              placeholder="Enter password"
+            />
+          </div>
+          <ul class="button-group">
+            <li>
+              <app-button
+                [classList]="'btn btn-primary btn-sm form-btn'"
+                [textContent]="'Submit'"
+              ></app-button>
+            </li>
+            <li>
+              <app-button
+                [classList]="'btn btn-danger btn-sm form-btn'"
+                [textContent]="'Cancel'"
+                (click)="hideModal()"
+              ></app-button>
+            </li>
+          </ul>
+        </form>
       </div>
     </div>
   </div>

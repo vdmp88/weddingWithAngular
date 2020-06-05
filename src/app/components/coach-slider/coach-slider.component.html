@@ -32,13 +32,13 @@
             <div class="slider__btn">
               <app-button
                 *ngIf="!isMobile"
-                [classList]="'brand-btn'"
+                [classList]="'brand-btn default-button'"
                 [textContent]="'Lets start'"
               ></app-button>
               <app-button
                 *ngIf="isMobile"
                 [imgPath]="'assets/img/slider-button.svg'"
-                [classList]="'brand-btn brand-btn--mobile'"
+                [classList]="'brand-btn brand-btn--mobile default-button'"
               >
               </app-button>
             </div>

@@ -17,13 +17,13 @@
         <li>
           <app-button
             *ngIf="!isMobile"
-            [classList]="'dark-btn'"
+            [classList]="'dark-btn default-button'"
             [textContent]="'Start'"
             (click)="showModal()"
           ></app-button>
           <app-button
             *ngIf="isMobile"
-            [classList]="'brand-btn'"
+            [classList]="'brand-btn default-button'"
             [textContent]="'Lets start'"
           ></app-button>
         </li>
