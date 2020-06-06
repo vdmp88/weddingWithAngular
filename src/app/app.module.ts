@@ -19,6 +19,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ServiceSliderComponent } from './components/service-slider/service-slider.component';
 import { CoachSliderComponent } from './components/coach-slider/coach-slider.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { CoachSliderComponent } from './components/coach-slider/coach-slider.com
     BrowserAnimationsModule,
     HttpClientModule,
     ModalModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

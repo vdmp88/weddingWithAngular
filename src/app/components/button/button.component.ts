@@ -9,6 +9,8 @@ export class ButtonComponent implements OnInit {
   @Input() textContent: string;
   @Input() classList: string;
   @Input() imgPath: string;
+  @Input() disabled: any;
+  @Input() type: string;
 
   constructor() {}
 

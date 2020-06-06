@@ -1,20 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataService } from './service/data.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  constructor(private dataService: DataService) {}
+export class AppComponent implements OnInit {
+  constructor() {}
   public modalState: boolean = false;
 
   ngOnInit(): void {}
 
-  ngOnDestroy(): void {}
-
-  toggleModal(event: boolean): void {
-    this.modalState = event;
+  toggleModal(): void {
+    this.modalState = !this.modalState;
   }
 }

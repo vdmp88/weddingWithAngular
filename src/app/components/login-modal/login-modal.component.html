@@ -14,39 +14,80 @@
         </h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="submit()">
           <div class="form-group">
             <label for="inputEmail">Email address</label>
             <input
+              formControlName="email"
               type="email"
               class="form-control"
               id="inputEmail"
               aria-describedby="emailHelp"
               placeholder="Enter email"
             />
+            <div
+              class="alert alert-danger mt-3"
+              *ngIf="form.get('email').invalid && form.get('email').touched"
+            >
+              <p *ngIf="form.get('email').errors.required">
+                Email is not be empty!
+              </p>
+              <p *ngIf="form.get('email').errors.email">Enter a valid email!</p>
+            </div>
           </div>
           <div class="form-group">
             <label for="inputPassword">Password</label>
             <input
+              formControlName="password"
               type="password"
               class="form-control"
               id="inputPassword"
               placeholder="Enter password"
             />
+            <div
+              class="alert alert-danger mt-3"
+              *ngIf="
+                form.get('password').invalid && form.get('password').touched
+              "
+            >
+              <p *ngIf="form.get('password').errors.minlength">
+                The length must be at least
+              </p>
+              <p *ngIf="form.get('password').errors.required">
+                Password is not be empty!
+              </p>
+            </div>
           </div>
           <ul class="button-group">
             <li>
-              <app-button
+              <!-- <app-button
+                [disabled]="'form.invalid'"
+                [type]="'submit'"
                 [classList]="'btn btn-primary btn-sm form-btn'"
                 [textContent]="'Submit'"
-              ></app-button>
+              ></app-button> -->
+              <button
+                type="submit"
+                class="btn btn-primary btn-sm form-btn"
+                [disabled]="form.invalid"
+              >
+                Submit
+              </button>
             </li>
             <li>
-              <app-button
+              <!-- <app-button
                 [classList]="'btn btn-danger btn-sm form-btn'"
+                [type]="'button'"
                 [textContent]="'Cancel'"
                 (click)="hideModal()"
-              ></app-button>
+              ></app-button> -->
+              <button
+                type="button"
+                (click)="hideModal()"
+                class="btn btn-danger btn-sm form-btn"
+              >
+                Cancel
+              </button>
             </li>
           </ul>
         </form>
