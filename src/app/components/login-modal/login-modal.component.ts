@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../service/auth.service';
+import { Auth } from '../../interfaces/auth.interface';
 
 @Component({
   selector: 'app-login-modal',
@@ -16,10 +18,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginModalComponent implements OnInit, AfterViewInit {
   @ViewChild('loginModal', { static: false }) loginModal: ModalDirective;
-  @Output() onButtonClick = new EventEmitter();
+  @Output() onShowLogin = new EventEmitter();
+  @Output() onLogin = new EventEmitter();
+
   public form: FormGroup;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -36,11 +40,27 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
   }
 
   hideModal(): void {
-    this.onButtonClick.emit();
+    this.onShowLogin.emit();
   }
 
   submit(): void {
-    console.log(this.form.value);
+    let user = this.form.value;
+    this.login(user);
     this.form.reset();
+  }
+
+  login(user: Auth): void {
+    this.authService.login(user).subscribe(
+      (token) => {
+        if (token.status === 200) {
+          this.onLogin.emit();
+          localStorage.setItem('currentUser', token.body.access_token);
+          this.hideModal();
+        }
+      },
+      (err) => {
+        console.log('Failed response, try again!');
+      }
+    );
   }
 }

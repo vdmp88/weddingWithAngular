@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isMobile: boolean;
   public breakpoint: number = 768;
 
-  @Output() onButtonClick = new EventEmitter();
+  @Output() onShowLogin = new EventEmitter();
 
   constructor(private dataService: DataService) {}
 
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   showModal(): void {
-    this.onButtonClick.emit();
+    this.onShowLogin.emit();
   }
 
   private getNavigation(): void {

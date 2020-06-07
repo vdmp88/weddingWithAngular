@@ -1,4 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Subscription } from 'rxjs';
 import { Section } from '../../interfaces/data.interface';
@@ -9,6 +16,9 @@ import { Section } from '../../interfaces/data.interface';
   styleUrls: ['./offer.component.scss'],
 })
 export class OfferComponent implements OnInit, OnDestroy {
+  @Input() isLogin: boolean;
+  @Output() onShowEdit = new EventEmitter();
+
   public offerSectionSub: Subscription;
   public offerContent: Section;
   public isLoading: boolean;
@@ -21,6 +31,10 @@ export class OfferComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.offerSectionSub.unsubscribe();
+  }
+
+  showEditModal() {
+    this.onShowEdit.emit();
   }
 
   private getOfferSection(): void {

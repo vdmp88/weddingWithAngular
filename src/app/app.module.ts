@@ -13,7 +13,6 @@ import { OfferComponent } from './components/offer/offer.component';
 import { ServicesComponent } from './components/services/services.component';
 import { CardComponent } from './components/card/card.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { DataService } from './service/data.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -21,6 +20,9 @@ import { ServiceSliderComponent } from './components/service-slider/service-slid
 import { CoachSliderComponent } from './components/coach-slider/coach-slider.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataService } from './service/data.service';
+import { AuthService } from './service/auth.service';
+import { EditContentModalComponent } from './components/edit-content-modal/edit-content-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginModalComponent,
     ServiceSliderComponent,
     CoachSliderComponent,
+    EditContentModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [DataService],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

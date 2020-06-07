@@ -2,6 +2,14 @@
   <app-loader></app-loader>
 </ng-template>
 <section class="section" *ngIf="!isLoading; else loader">
+  <div class="section__edit">
+    <app-button
+      *ngIf="isLogin"
+      [classList]="'default-button dark-btn'"
+      [textContent]="'Edit'"
+      (click)="showEditModal()"
+    ></app-button>
+  </div>
   <h3 class="section__title">
     {{ offerContent.meta.title }}
   </h3>

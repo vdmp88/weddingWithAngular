@@ -1,6 +1,12 @@
 @import "variables";
 @import "fonts";
 
+.section__edit {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px;
+}
+
 .list--offer {
   justify-content: space-between;
   .list__card {
