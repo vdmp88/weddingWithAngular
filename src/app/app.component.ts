@@ -11,7 +11,9 @@ export class AppComponent implements OnInit {
   public editModalState: boolean = false;
   public isLogin: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkAuth();
+  }
 
   toggleLoginModal(): void {
     this.loginModalState = !this.loginModalState;
@@ -23,5 +25,9 @@ export class AppComponent implements OnInit {
 
   successLogin(): void {
     this.isLogin = true;
+  }
+
+  checkAuth(): void {
+    localStorage.currentUser ? (this.isLogin = true) : false;
   }
 }

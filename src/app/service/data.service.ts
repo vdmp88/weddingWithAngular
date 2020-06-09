@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Section } from '../interfaces/data.interface';
 
@@ -37,6 +37,19 @@ export class DataService {
   getOfferSection(): Observable<Section> {
     return this.httpClient.get<Section>(
       `${this.baseUrl}/app/api/v1/section/offer`
+    );
+  }
+
+  updateConten(content: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('currentUser'),
+      }),
+    };
+    return this.httpClient.put(
+      `${this.baseUrl}/app/api/v1/section/offer`,
+      content,
+      httpOptions
     );
   }
 }

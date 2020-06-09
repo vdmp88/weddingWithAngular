@@ -39,9 +39,11 @@ export class OfferComponent implements OnInit, OnDestroy {
 
   private getOfferSection(): void {
     this.isLoading = true;
-    this.dataService.getOfferSection().subscribe((data: Section) => {
-      this.offerContent = data;
-      this.isLoading = false;
-    });
+    this.offerSectionSub = <Subscription>(
+      this.dataService.getOfferSection().subscribe((data: Section) => {
+        this.offerContent = data;
+        this.isLoading = false;
+      })
+    );
   }
 }

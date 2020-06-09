@@ -1,3 +1,6 @@
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
 <div
   bsModal
   #editModal="bs-modal"
@@ -6,11 +9,11 @@
   role="dialog"
   [config]="{ backdrop: 'static', keyboard: false }"
 >
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog" *ngIf="!isLoading; else loader">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="dialog-child-name" class="modal-title pull-left">
-          Child modal
+        <h4 class="modal-title pull-left">
+          Edit content
         </h4>
         <button
           type="button"
@@ -22,7 +25,37 @@
         </button>
       </div>
       <div class="modal-body">
-        I am a child modal, opened from parent component!
+        <form [formGroup]="editForm" (ngSubmit)="submitForm()">
+          <h3 class="mt-2 mb-3">Meta content:</h3>
+          <div
+            class="form-group"
+            *ngFor="let item of editContent.meta | keyvalue"
+          >
+            <div class="p-2">
+              <label>{{ item.key }}</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="{{ item.key }}"
+                value="{{ item.value }}"
+              />
+            </div>
+          </div>
+          <!-- <h3 class="mt-2 mb-3">Page content:</h3>
+          <div class="form-group" *ngFor="let item of editContent.content">
+            <div class="p-2">
+              <label>Title:</label>
+              <input type="text" class="form-control" [value]="item.title" />
+            </div>
+            <div class="p-2">
+              <label>Url:</label>
+              <input type="text" class="form-control" [value]="item.url" />
+            </div>
+          </div> -->
+          <button class="btn btn-primary btn-sm btn-block" type="submit">
+            Update section
+          </button>
+        </form>
       </div>
     </div>
   </div>

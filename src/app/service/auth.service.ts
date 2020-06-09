@@ -17,6 +17,4 @@ export class AuthService {
       { observe: 'response' }
     );
   }
-
-  private setSession(authResult) {}
 }
