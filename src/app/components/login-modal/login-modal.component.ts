@@ -54,7 +54,10 @@ export class LoginModalComponent implements OnInit, AfterViewInit {
       (token) => {
         if (token.status === 200) {
           this.onLogin.emit();
-          localStorage.setItem('currentUser', token.body.access_token);
+          localStorage.setItem(
+            'currentUser',
+            JSON.stringify(token.body.access_token)
+          );
           this.hideModal();
         }
       },

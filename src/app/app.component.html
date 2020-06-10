@@ -2,7 +2,11 @@
 <div class="custom-container">
   <app-dance-lesson></app-dance-lesson>
   <app-services></app-services>
-  <app-offer [isLogin]="isLogin" (onShowEdit)="toggleEditModal()"></app-offer>
+  <app-offer
+    [isLogin]="isLogin"
+    [updatedData]="updatedData"
+    (onShowEdit)="toggleEditModal()"
+  ></app-offer>
   <app-coaches></app-coaches>
 </div>
 <app-footer></app-footer>

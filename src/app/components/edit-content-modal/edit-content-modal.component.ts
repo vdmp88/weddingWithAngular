@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { DataService } from '../../service/data.service';
+import { OfferDataService } from '../../service/offer-data.service';
 import { Subscription } from 'rxjs';
 import { Section } from '../../interfaces/data.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -28,15 +29,13 @@ export class EditContentModalComponent
   public isLoading: boolean;
   public editForm: FormGroup;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private offerDataService: OfferDataService
+  ) {}
 
   ngOnInit(): void {
     this.getEditableContent();
-
-    this.editForm = new FormGroup({
-      title: new FormControl(null),
-      description: new FormControl(null),
-    });
   }
 
   ngAfterViewInit(): void {
@@ -56,8 +55,19 @@ export class EditContentModalComponent
     this.editContent.meta.description = this.editForm.value.description;
 
     this.dataService.updateConten(this.editContent).subscribe(() => {
-      // req offer sections
+      this.offerDataService.updateData(this.editContent);
       this.hideEditModal();
+    });
+  }
+
+  createForm(): void {
+    this.editForm = new FormGroup({
+      title: new FormControl(this.editContent.meta.title, [
+        Validators.required,
+      ]),
+      description: new FormControl(this.editContent.meta.description, [
+        Validators.required,
+      ]),
     });
   }
 
@@ -67,6 +77,7 @@ export class EditContentModalComponent
       this.dataService.getOfferSection().subscribe((data: Section) => {
         this.editContent = data;
         this.isLoading = false;
+        this.createForm();
       })
     );
   }

@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { OfferDataService } from '../../service/offer-data.service';
 import { DataService } from '../../service/data.service';
 import { Subscription } from 'rxjs';
 import { Section } from '../../interfaces/data.interface';
@@ -17,16 +18,21 @@ import { Section } from '../../interfaces/data.interface';
 })
 export class OfferComponent implements OnInit, OnDestroy {
   @Input() isLogin: boolean;
+  @Input() updatedData: boolean;
   @Output() onShowEdit = new EventEmitter();
 
   public offerSectionSub: Subscription;
   public offerContent: Section;
   public isLoading: boolean;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private offerDataService: OfferDataService
+  ) {}
 
   ngOnInit(): void {
     this.getOfferSection();
+    this.offerDataService.data.subscribe((res) => (this.offerContent = res));
   }
 
   ngOnDestroy(): void {

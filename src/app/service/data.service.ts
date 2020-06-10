@@ -43,7 +43,8 @@ export class DataService {
   updateConten(content: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + localStorage.getItem('currentUser'),
+        Authorization:
+          'Bearer ' + JSON.parse(localStorage.getItem('currentUser')),
       }),
     };
     return this.httpClient.put(

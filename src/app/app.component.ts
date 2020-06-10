@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   public loginModalState: boolean = false;
   public editModalState: boolean = false;
   public isLogin: boolean = false;
+  public updatedData: boolean = false;
 
   ngOnInit(): void {
     this.checkAuth();
@@ -28,6 +29,8 @@ export class AppComponent implements OnInit {
   }
 
   checkAuth(): void {
-    localStorage.currentUser ? (this.isLogin = true) : false;
+    JSON.parse(localStorage.getItem('currentUser'))
+      ? (this.isLogin = true)
+      : (this.isLogin = false);
   }
 }
