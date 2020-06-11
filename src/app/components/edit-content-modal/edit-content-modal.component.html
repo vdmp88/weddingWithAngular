@@ -41,14 +41,24 @@
             </div>
           </div>
           <h3 class="mt-2 mb-3">Page content:</h3>
-          <div class="form-group" *ngFor="let item of editContent.content">
-            <div class="p-2">
-              <label>Title:</label>
-              <input type="text" class="form-control" />
-            </div>
-            <div class="p-2">
-              <label>Url:</label>
-              <input type="text" class="form-control" />
+          <div
+            class="form-group"
+            *ngFor="let item of editContent.content; let idx = index"
+            formArrayName="content"
+          >
+            <div [formGroupName]="idx">
+              <div class="p-2">
+                <label>Title:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="title"
+                />
+              </div>
+              <div class="p-2">
+                <label>Url:</label>
+                <input type="text" class="form-control" formControlName="url" />
+              </div>
             </div>
           </div>
           <button class="btn btn-primary btn-sm btn-block" type="submit">

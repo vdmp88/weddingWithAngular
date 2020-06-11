@@ -12,7 +12,7 @@ import { DataService } from '../../service/data.service';
 import { OfferDataService } from '../../service/offer-data.service';
 import { Subscription } from 'rxjs';
 import { Section } from '../../interfaces/data.interface';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-content-modal',
@@ -53,6 +53,7 @@ export class EditContentModalComponent
   submitForm(): void {
     this.editContent.meta.title = this.editForm.value.title;
     this.editContent.meta.description = this.editForm.value.description;
+    this.editContent.content = this.editForm.value.content;
 
     this.dataService.updateConten(this.editContent).subscribe(() => {
       this.offerDataService.updateData(this.editContent);
@@ -61,13 +62,20 @@ export class EditContentModalComponent
   }
 
   createForm(): void {
+    const content: FormArray = new FormArray([]);
+    this.editContent.content.forEach((item) =>
+      content.push(
+        new FormGroup({
+          title: new FormControl(item.title),
+          url: new FormControl(item.url),
+        })
+      )
+    );
+
     this.editForm = new FormGroup({
-      title: new FormControl(this.editContent.meta.title, [
-        Validators.required,
-      ]),
-      description: new FormControl(this.editContent.meta.description, [
-        Validators.required,
-      ]),
+      title: new FormControl(this.editContent.meta.title),
+      description: new FormControl(this.editContent.meta.description),
+      content,
     });
   }
 
