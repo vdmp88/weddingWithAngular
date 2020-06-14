@@ -18,7 +18,6 @@ import { Section } from '../../interfaces/data.interface';
 })
 export class OfferComponent implements OnInit, OnDestroy {
   @Input() isLogin: boolean;
-  @Input() updatedData: boolean;
   @Output() onShowEdit = new EventEmitter();
 
   public offerSectionSub: Subscription;

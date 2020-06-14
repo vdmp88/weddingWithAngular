@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   public loginModalState: boolean = false;
   public editModalState: boolean = false;
   public isLogin: boolean = false;
-  public updatedData: boolean = false;
 
   ngOnInit(): void {
     this.checkAuth();
